@@ -22,16 +22,18 @@ public class CollisionWithPlayer : MonoBehaviour {
         //get animator cua enemy
         anim_E = GetComponent<Animator>();
 	}
-	
+
+    bool stopGame = false;
 	// Update is called once per frame
 	void Update () {
         
         distancePlayer = transform.position.x - PlayerController.tranformPlayer.position.x;
 
         //neu khoang cach giua enemy vs Player < 6 set animation cho enemy
-        if (distancePlayer < 80.0f)
+        if (distancePlayer < 90.0f && stopGame == false)
         {
             anim_E.SetBool("isRun_E", true);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-50.0f,0);
         }
 
         //Collider2D[] ListCol2D = Physics2D.OverlapPointAll(frontCheckTranform.position);
@@ -50,9 +52,13 @@ public class CollisionWithPlayer : MonoBehaviour {
     {
         if (col.gameObject.tag == "Player")
         {
+            stopGame = true;
             MoveMaps.mapMoveSpeed = 0.0f;
             PlayerController.anim.SetBool("isFall", true);
             anim_E.SetBool("isFall_E",true);
+
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
+
         }
     }
 }
