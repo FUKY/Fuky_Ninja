@@ -26,7 +26,7 @@ public class CollisionWithPlayer : MonoBehaviour {
     bool stopGame = false;
 	// Update is called once per frame
 	void Update () {
-        
+
         distancePlayer = transform.position.x - PlayerController.tranformPlayer.position.x;
 
         //neu khoang cach giua enemy vs Player < 6 set animation cho enemy

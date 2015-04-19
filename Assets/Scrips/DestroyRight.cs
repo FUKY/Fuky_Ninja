@@ -15,12 +15,16 @@ public class DestroyRight : MonoBehaviour {
        
 	}
 
+    //void OnCollisionEnter2D(Collision2D coll)
+    //{
+    //    Debug.Log("ok");
+    //    Destroy(coll.gameObject);
+        
+
+    //}
+
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "ground")
-        {
-            Debug.Log("ok");
-        }
         //Debug.Log("ok");
         Destroy(col.gameObject);
     }
